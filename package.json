@@ -1,0 +1,24 @@
+{
+  "name": "my_team_profile_generator",
+  "version": "1.0.0",
+  "description": "My team profile generator",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KevinJ3259/my_team_profile_generator.git"
+  },
+  "author": "Kevin Jordan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KevinJ3259/my_team_profile_generator/issues"
+  },
+  "homepage": "https://github.com/KevinJ3259/my_team_profile_generator#readme",
+  "dependencies": {
+    "inquirer": "^8.2.4",
+    "jest": "^28.1.0"
+  }
+}
