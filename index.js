@@ -51,63 +51,63 @@ async function run() {
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Team Profile Generator</title>
-        <style type="text/css">
-        .title {
-            background: salmon;
-            height: 5rem;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: white;
-            font-size: 1.5rem;
-            font-family: sans-serif;
-            margin-bottom: 2rem;
-          }
-          
-          .card-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-around;
-          }
-    
-          .card {
-            width: 20rem;
-            border-radius: 0.25rem;
-            margin-bottom: 1rem;
-          }
-    
-          .card-head {
-            padding: 1rem;
-            background: #1565c0;
-            color: white;
-            border-radius: 0.5rem 0.5rem 0 0;
-          }
-    
-          .card-body {
-            padding: 1rem;
-            background: lightgrey;
-            border-radius: 0 0 0.5rem 0.5rem;
-            border-top: 3px groove lightgrey;
-          }
-    
-          .card-body div {
-            padding: 0.5rem;
-            margin-bottom: 0.5rem;
-            background: white;
-            border: 3px inset lightgrey;
-          }
-    
-          .card-body div:last-of-type {
-            margin-bottom: 0;
-          }
-        </style>
+        <link rel="stylesheet" href="./style.css" />
       </head>
       <body>
         <div class="title">My Team</div> 
         <div class="card-container">${output.join("\n")}</div>
       </body>
     </html>`;
-  await fs.writeFile(path.join(__dirname, "index.html"), htmlContents);
+  await fs.writeFile(path.join(__dirname, "dist","index.html"), htmlContents);
+  const styleContents =`.title {
+    background: salmon;
+    height: 5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 1.5rem;
+    font-family: sans-serif;
+    margin-bottom: 2rem;
+  }
+  
+  .card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+
+  .card {
+    width: 20rem;
+    border-radius: 0.25rem;
+    margin-bottom: 1rem;
+  }
+
+  .card-head {
+    padding: 1rem;
+    background: #1565c0;
+    color: white;
+    border-radius: 0.5rem 0.5rem 0 0;
+  }
+
+  .card-body {
+    padding: 1rem;
+    background: lightgrey;
+    border-radius: 0 0 0.5rem 0.5rem;
+    border-top: 3px groove lightgrey;
+  }
+
+  .card-body div {
+    padding: 0.5rem;
+    margin-bottom: 0.5rem;
+    background: white;
+    border: 3px inset lightgrey;
+  }
+
+  .card-body div:last-of-type {
+    margin-bottom: 0;
+  }`
+  await fs.writeFile(path.join(__dirname, "dist","style.css"), styleContents); 
 }
 
 run();
