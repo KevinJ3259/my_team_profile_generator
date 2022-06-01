@@ -1,6 +1,9 @@
 const inquirer = require("inquirer");
 const fs = require("fs").promises;
 const path = require("path");
+const Engineer = require("./lib/Engineer");
+const Intern = require("./lib/Intern");
+const Manager = require("./lib/Manager");
 
 const managerQuestions = [
   {
@@ -83,46 +86,58 @@ const internQuestions = [
 const output = [];
 
 function addManager() {
-  return inquirer.prompt(managerQuestions).then(function (answers) {
+  return inquirer.prompt(managerQuestions)
+  .then(function(answers) {
+    return new Manager(answers.name, answers.ID, answers.email, answers.office);
+  })
+  .then(function (manager) {
     output.push(`<div class="card">
         <div class="card-head">
-          <div>${answers.name}</div>
-          <div>Manager</div>
+          <div>${manager.getName()}</div>
+          <div>${manager.getRole()}</div>
         </div>
         <div class="card-body">
-          <div>ID: ${answers.ID}</div>
-          <div>Email: <a href="mailto:${answers.email}">${answers.email}</a></div>
-          <div>Office number: ${answers.office}</div>
+          <div>ID: ${manager.getId()}</div>
+          <div>Email: <a href="mailto:${manager.getEmail()}">${manager.getEmail()}</a></div>
+          <div>Office number: ${manager.getOfficeNumber()}</div>
         </div>
       </div>`);
   });
 }
 function addEngineer() {
-  return inquirer.prompt(engineerQuestions).then(function (answers) {
+  return inquirer.prompt(engineerQuestions)
+  .then(function (answers) {
+    return new Engineer(answers.name, answers.ID, answers.email, answers.github);
+  })
+  .then(function (engineer) {
     output.push(`<div class="card">
         <div class="card-head">
-          <div>${answers.name}</div>
-          <div>Engineer</div>
+          <div>${engineer.getName()}</div>
+          <div>${engineer.getRole()}</div>
         </div>
         <div class="card-body">
-          <div>ID: ${answers.ID}</div>
-          <div>Email: <a href="mailto:${answers.email}">${answers.email}</a></div>
-          <div>Github Username: ${answers.github}</div>
+          <div>ID: ${engineer.getId()}</div>
+          <div>Email: <a href="mailto:${engineer.getEmail()}">${engineer.getEmail()}</a></div>
+          <div>Github Username: ${engineer.getGithub()}</div>
         </div>
       </div>`);
   });
 }
 function addIntern() {
-  return inquirer.prompt(internQuestions).then(function (answers) {
+  return inquirer.prompt(internQuestions)
+  .then(function(answers) {
+    return new Intern(answers.name, answers.ID, answers.email, answers.school);
+  })
+  .then(function (intern) {
     output.push(`<div class="card">
         <div class="card-head">
-          <div>${answers.name}</div>
-          <div>Intern</div>
+          <div>${intern.getName()}</div>
+          <div>${intern.getRole()}</div>
         </div>
         <div class="card-body">
-          <div>ID: ${answers.ID}</div>
-          <div>Email: <a href="mailto:${answers.email}">${answers.email}</a></div>
-          <div>School Name: ${answers.school}</div>
+          <div>ID: ${intern.getId()}</div>
+          <div>Email: <a href="mailto:${intern.getEmail()}">${intern.getEmail()}</a></div>
+          <div>School Name: ${intern.getSchool()}</div>
         </div>
       </div>`);
   });
