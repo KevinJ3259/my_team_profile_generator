@@ -2,10 +2,9 @@
   "name": "my_team_profile_generator",
   "version": "1.0.0",
   "description": "My team profile generator",
-  "main": "server.js",
+  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "node ."
   },
   "repository": {
     "type": "git",
