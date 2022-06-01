@@ -1,32 +1,14 @@
 const inquirer = require("inquirer");
 const fs = require("fs").promises;
 const path = require("path");
-const Engineer = require("./lib/Engineer");
+
 const Intern = require("./lib/Intern");
 const Manager = require("./lib/Manager");
+const addEngineer = require("./src/engineer");
+const addIntern = require("./src/intern");
+const addManager = require("./src/manager");
 
-const managerQuestions = [
-  {
-    type: "input",
-    name: "name",
-    message: "What is the manager's name?",
-  },
-  {
-    type: "input",
-    name: "ID",
-    message: "What is the manager's ID?",
-  },
-  {
-    type: "input",
-    name: "email",
-    message: "What is the manager's email?",
-  },
-  {
-    type: "input",
-    name: "office",
-    message: "What is the manager's office number?",
-  },
-];
+
 
 const menuQuestions = [
   {
@@ -37,127 +19,31 @@ const menuQuestions = [
   },
 ];
 
-const engineerQuestions = [
-  {
-    type: "input",
-    name: "name",
-    message: "What is the engineer's name?",
-  },
-  {
-    type: "input",
-    name: "ID",
-    message: "What is the engineer's ID?",
-  },
-  {
-    type: "input",
-    name: "email",
-    message: "What is the engineer's email?",
-  },
-  {
-    type: "input",
-    name: "github",
-    message: "What is the engineer's github username?",
-  },
-];
 
-const internQuestions = [
-  {
-    type: "input",
-    name: "name",
-    message: "What is the intern's name?",
-  },
-  {
-    type: "input",
-    name: "ID",
-    message: "What is the intern's ID?",
-  },
-  {
-    type: "input",
-    name: "email",
-    message: "What is the intern's email?",
-  },
-  {
-    type: "input",
-    name: "school",
-    message: "What is the intern's school name?",
-  },
-];
+
 
 const output = [];
 
-function addManager() {
-  return inquirer.prompt(managerQuestions)
-  .then(function(answers) {
-    return new Manager(answers.name, answers.ID, answers.email, answers.office);
-  })
-  .then(function (manager) {
-    output.push(`<div class="card">
-        <div class="card-head">
-          <div>${manager.getName()}</div>
-          <div>${manager.getRole()}</div>
-        </div>
-        <div class="card-body">
-          <div>ID: ${manager.getId()}</div>
-          <div>Email: <a href="mailto:${manager.getEmail()}">${manager.getEmail()}</a></div>
-          <div>Office number: ${manager.getOfficeNumber()}</div>
-        </div>
-      </div>`);
-  });
-}
-function addEngineer() {
-  return inquirer.prompt(engineerQuestions)
-  .then(function (answers) {
-    return new Engineer(answers.name, answers.ID, answers.email, answers.github);
-  })
-  .then(function (engineer) {
-    output.push(`<div class="card">
-        <div class="card-head">
-          <div>${engineer.getName()}</div>
-          <div>${engineer.getRole()}</div>
-        </div>
-        <div class="card-body">
-          <div>ID: ${engineer.getId()}</div>
-          <div>Email: <a href="mailto:${engineer.getEmail()}">${engineer.getEmail()}</a></div>
-          <div>Github Username: ${engineer.getGithub()}</div>
-        </div>
-      </div>`);
-  });
-}
-function addIntern() {
-  return inquirer.prompt(internQuestions)
-  .then(function(answers) {
-    return new Intern(answers.name, answers.ID, answers.email, answers.school);
-  })
-  .then(function (intern) {
-    output.push(`<div class="card">
-        <div class="card-head">
-          <div>${intern.getName()}</div>
-          <div>${intern.getRole()}</div>
-        </div>
-        <div class="card-body">
-          <div>ID: ${intern.getId()}</div>
-          <div>Email: <a href="mailto:${intern.getEmail()}">${intern.getEmail()}</a></div>
-          <div>School Name: ${intern.getSchool()}</div>
-        </div>
-      </div>`);
-  });
-}
+
+
+
 
 async function run() {
-  await addManager();
+  const managerHtml = await addManager();
+  output.push(managerHtml);
   let answers = await inquirer.prompt(menuQuestions);
   while (answers.choice !== "Finish entry") {
-    //clone what we currently have for add manager including the questions
     switch (answers.choice) {
       case "Add an engineer":
-        await addEngineer();
+        const engineerHtml = await addEngineer();
+        output.push(engineerHtml);
         break;
       case "Add an intern":
-        await addIntern();
+        const internHtml = await addIntern();
+        output.push(internHtml);
     }
     answers = await inquirer.prompt(menuQuestions);
   }
-  console.log(output);
   const htmlContents = `<!DOCTYPE html>
     <html lang="en">
       <head>
