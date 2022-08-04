@@ -1,4 +1,5 @@
 # my_team_profile_generator
+
 Table Of Contents:
 Description
 Deployment
@@ -8,9 +9,11 @@ Description
 In this application, you will witness my use of Inquirer, as well as the Jest package.
 
 Deployment:
-[GitHub] Repo: https://github.com/KevinJ3259/my_team_profile_generator 
+[GitHub] Repo: https://github.com/KevinJ3259/my_team_profile_generator
 
-GitHub Pages: https://kevinj3259.github.io/my_team_profile_generator 
+GitHub Pages: https://kevinj3259.github.io/my_team_profile_generator
+
+Walkthrough Video: https://drive.google.com/file/d/1mxDlUzU5oZtD4l0HDLdjePm90-138URb/view
 
 picture
 
