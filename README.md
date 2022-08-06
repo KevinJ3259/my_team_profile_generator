@@ -39,7 +39,7 @@ GitHub Pages: https://kevinj3259.github.io/my_team_profile_generator
 
 Walkthrough Video: https://drive.google.com/file/d/1mxDlUzU5oZtD4l0HDLdjePm90-138URb/view
 
-picture
+Screenshot: ![(https://imgur.com/Yebz9Xp)]
 
 Installation:
 Npm i
